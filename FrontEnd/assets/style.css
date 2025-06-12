@@ -281,9 +281,7 @@ button {
   border-radius: 25px;
   cursor: pointer;
 }
-button.selected {
-  color: violet;
-}
+
 /*Page loggin */
 #login-page {
   background-color: beige;
@@ -443,9 +441,7 @@ button.selected {
   flex-direction: column;
   gap: 15px;
 }
-.hidden {
-  display: none;
-}
+
 #photo-form {
   display: flex;
   flex-direction: column;
@@ -461,14 +457,18 @@ button.selected {
 }
 
 #photo-form button[type="submit"] {
-  font-family: "Syne", sans-serif;
-  font-weight: 700;
   background-color: #1d6154;
   color: white;
-  padding: 10px;
+  width: 237px;
+  height: 36px;
+  justify-content: center;
   border: none;
-
-  cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  margin: auto;
 }
 #btn-back {
   align-self: flex-start;
@@ -478,4 +478,54 @@ button.selected {
   cursor: pointer;
   color: #1d6154;
   margin-bottom: 10px;
+}
+
+.admin-hidden {
+  display: none !important;
+}
+
+button.selected {
+  background-color: #1d6154;
+  color: white;
+}
+
+#btn-add-photo {
+  background-color: #1d6154;
+  color: white;
+  width: 237px;
+  height: 36px;
+  justify-content: center;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  margin: auto;
+}
+
+.hidden-if-not-logged {
+  display: none;
+}
+
+.edit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  width: 0px;
+}
+.edit-wrapper i {
+  margin-left: 25px;
+}
+.container-title {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+}
+.hidden {
+  display: none;
 }

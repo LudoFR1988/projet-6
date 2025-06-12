@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       containerButtons.appendChild(button);
     }
+
+    // Active par défaut le bouton "Tous"
+    const allBtn = containerButtons.querySelector("button");
+    if (allBtn) {
+      allBtn.classList.add("selected");
+    }
   }
 
   async function displayWorks(categoryId) {
@@ -43,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function selectButton(button) {
-    const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll("#container-buttons button");
     buttons.forEach((btn) => btn.classList.remove("selected"));
     button.classList.add("selected");
   }
@@ -67,11 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("edition-banner").classList.remove("hidden");
 
-    const title = document.querySelector("#portfolio h2");
-    const editBtn = document.createElement("span");
-    editBtn.textContent = "modifier";
-    editBtn.classList.add("edit-button");
-    title.appendChild(editBtn);
+    const editBtn = document.querySelector(".edit-wrapper");
+    editBtn.classList.remove("hidden");
+
+    // Masquer les boutons de filtre
+    const containerButtons = document.getElementById("container-buttons");
+    containerButtons.classList.add("admin-hidden");
 
     createModal();
 
@@ -112,9 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.body.appendChild(modal);
 
-    // Fermer la modale avec la croix
+    // Fermer modale
     modal.querySelector(".close").addEventListener("click", () => {
       modal.classList.add("hidden");
+      resetForm();
     });
 
     window.addEventListener("click", (e) => {
@@ -210,11 +218,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (res.ok) {
       alert("Image ajoutée !");
+      resetForm();
       document.getElementById("modal").classList.add("hidden");
       changeGalleryModal();
       displayWorks();
     } else {
       alert("Erreur ajout image");
+    }
+  }
+
+  function resetForm() {
+    const form = document.getElementById("photo-form");
+    if (form) {
+      form.reset();
     }
   }
 
